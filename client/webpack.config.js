@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+import { openDB, deleteDB, wrap, upwrap } from 'idb';
 
 module.exports = {
   mode: 'development',
@@ -41,3 +42,9 @@ module.exports = {
     ]
   }
 };
+
+import { openDB, deleteDB, wrap, unwrap } from 'idb';
+
+async function doDatabaseStuff() {
+  const db = await openDB(…);
+}

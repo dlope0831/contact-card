@@ -24,7 +24,8 @@
   },
   "homepage": "https://github.com/dlope0831/contact-card#readme",
   "dependencies": {
-    "concurrently": "^7.5.0"
+    "concurrently": "^7.5.0",
+    "idb": "^7.1.1"
   },
   "engines": {
     "node": "17.x"
