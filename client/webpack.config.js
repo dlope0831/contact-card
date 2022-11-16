@@ -1,6 +1,5 @@
-const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-import { openDB, deleteDB, wrap, upwrap } from 'idb';
+const path = require('path');
 
 module.exports = {
   mode: 'development',
@@ -9,42 +8,34 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
+
   plugins: [
     new HtmlWebpackPlugin({
       template: './index.html',
       title: 'Webpack Plugin',
-    })
-  ],
+    }),
 
+  ],
   module: {
     rules: [
-      {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
-      },
       {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
       },
       {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+      },
+      {
         test: /\.m?js$/,
-        exclude: /node_modules/,
+        exclude: /(node_modules|bower_components)/,
         use: {
           loader: 'babel-loader',
           options: {
-            presets: [
-              ['@babel/preset-env', { targets: "defaults" }]
-            ]
-          }
-        }
-      }
-
-    ]
-  }
+            presets: ['@babel/preset-env'],
+          },
+        },
+      },
+    ],
+  },
 };
-
-import { openDB, deleteDB, wrap, unwrap } from 'idb';
-
-async function doDatabaseStuff() {
-  const db = await openDB(…);
-}
