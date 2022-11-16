@@ -5,3 +5,4 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, '../../client/dist/index.html'));
   });
 };
+
