@@ -2,6 +2,7 @@
 import {initdb, postDb, deleteDb, editDb} from './database';
 import {fetchCards} from './cards';
 import { toggleForm, clearForm } from './form';
+import Unused from '../images/unused-image.png'
 
 // Import CSS files
 import "../css/index.css";
@@ -99,3 +100,10 @@ window.editCard = (e) => {
   // Toggles the submit button so that it now Updates an existing contact instead of posting a new one
   submitBtnToUpdate = true;
 };
+
+if ('serviceWorker' in navigator) {
+  // use the window load event to keep the page load performant
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./servic-worker.js');
+  })
+}
